@@ -11,7 +11,7 @@ output "public_key" {
 
 output "private_key" {
   description = "The private key value"
-  value       = local.public_key
+  value       = local.private_key
   depends_on  = [ibm_is_ssh_key.key]
   sensitive   = true
 }
