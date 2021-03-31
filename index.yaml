@@ -1,11 +1,59 @@
 id: github.com/cloud-native-toolkit/terraform-ibm-vpc-ssh
-name: ""
+name: ibm-vpc-ssh
+alias: ssh
 type: terraform
-description: ""
+description: Module to register an ssh key into the IBM Cloud infrastructure for use in securely accessing VPC resources
 tags:
-  - tools
-  - devops
+  - vpc
+  - ssh
+  - infrastructure
+  - security
 versions:
+  - platforms: []
+    dependencies: []
+    variables:
+      - name: resource_group_name
+        scope: global
+        type: string
+        description: 'Name of resource group in which to create the ssh key instance. '
+      - name: region
+        scope: global
+        type: string
+        description: Region
+      - name: ibmcloud_api_key
+        scope: global
+        type: string
+        description: The IBM Cloud api key used to provision the IBM Cloud resources
+      - name: name_prefix
+        scope: global
+        type: string
+        description: (Optional) Prefix used to name all resources. If not provided then resource_group_name is used.
+        default: description = (Optional) Prefix used to name all resources. If not provided then resource_group_name is used.
+        optional: true
+      - name: name
+        scope: ignore
+        type: string
+        description: (Optional) Name given to the ssh key instance. If not provided it will be generated using prefix_name
+        default: description = (Optional) Name given to the ssh key instance. If not provided it will be generated using prefix_name
+        optional: true
+      - name: public_key
+        type: string
+        description: (Optional) The public key provided for the ssh key. If not provided it will be generated
+        default: description = (Optional) The public key provided for the ssh key. If not provided it will be generated
+        optional: true
+      - name: private_key
+        type: string
+        description: (Optional) The public key provided for the ssh key. If not provided it will be generated
+        default: description = (Optional) The public key provided for the ssh key. If not provided it will be generated
+        optional: true
+    version: v1.0.0
+    outputs:
+      - name: id
+        description: The id of the ssh key
+      - name: public_key
+        description: The public key value
+      - name: private_key
+        description: The private key value
   - platforms:
       - kubernetes
       - ocp3
@@ -27,28 +75,3 @@ versions:
     #          version: ">= 1.6.0"
     variables: []
     version: v0.0.0
-#    - name: cluster_type
-#      moduleRef:
-#        id: cluster
-#        output: type_code
-#    - name: cluster_ingress_hostname
-#      moduleRef:
-#        id: cluster
-#        output: ingress_hostname
-#    - name: cluster_config_file
-#      moduleRef:
-#        id: cluster
-#        output: config_file_path
-#    - name: tls_secret_name
-#      moduleRef:
-#        id: cluster
-#        output: tls_secret_name
-#    - name: releases_namespace
-#      moduleRef:
-#        id: namespace
-#        output: name
-#        discriminator: tools
-#    - name: icon_url
-#      moduleRef:
-#        id: dashboard
-#        output: base_icon_url
