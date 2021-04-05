@@ -6,14 +6,22 @@ locals {
   private_key   = local.keys_provided ? var.private_key : tls_private_key.generated_key[0].private_key_pem
 }
 
+resource null_resource print_names {
+  provisioner "local-exec" {
+    command = "echo 'Resource group: ${var.resource_group_name}'"
+  }
+}
+
+data ibm_resource_group resource_group {
+  depends_on = [null_resource.print_names]
+
+  name = var.resource_group_name
+}
+
 resource tls_private_key generated_key {
   count = !local.keys_provided ? 1 : 0
 
   algorithm   = "RSA"
-}
-
-data ibm_resource_group resource_group {
-  name = var.resource_group_name
 }
 
 resource ibm_is_ssh_key key {
