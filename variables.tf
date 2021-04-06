@@ -16,24 +16,24 @@ variable "ibmcloud_api_key" {
 
 variable "name_prefix" {
   type        = string
-  default     = ""
   description = "(Optional) Prefix used to name all resources. If not provided then resource_group_name is used."
+  default     = ""
 }
 
 variable "name" {
   type        = string
-  default     = ""
   description = "(Optional) Name given to the ssh key instance. If not provided it will be generated using prefix_name"
+  default     = ""
 }
 
 variable "public_key" {
   type        = string
-  default     = ""
   description = "(Optional) The public key provided for the ssh key. If not provided it will be generated"
+  default     = ""
 }
 
 variable "private_key" {
   type        = string
-  default     = ""
   description = "(Optional) The public key provided for the ssh key. If not provided it will be generated"
+  default     = ""
 }
