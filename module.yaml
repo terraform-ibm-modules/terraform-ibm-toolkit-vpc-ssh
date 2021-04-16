@@ -26,4 +26,4 @@ versions:
     - name: name_prefix
       scope: global
     - name: name
-      scope: ignore
+      scope: module
