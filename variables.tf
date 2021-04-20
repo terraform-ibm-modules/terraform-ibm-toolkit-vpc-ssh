@@ -26,6 +26,12 @@ variable "name" {
   default     = ""
 }
 
+variable "label" {
+  type        = string
+  description = "(Optional) Label used for the instance. It will be added to the name_prefix to create the name if the name is not provided."
+  default     = "sshkey"
+}
+
 variable "public_key" {
   type        = string
   description = "(Optional) The public key provided for the ssh key. If not provided it will be generated"
