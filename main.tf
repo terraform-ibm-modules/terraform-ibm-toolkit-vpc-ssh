@@ -3,6 +3,7 @@ locals {
   name          = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-${var.label}"
   keys_provided = var.public_key != "" && var.private_key != ""
   public_key    = local.keys_provided ? var.public_key : tls_private_key.generated_key[0].public_key_openssh
+  public_key_pem = local.keys_provided ? var.public_key : tls_private_key.generated_key[0].public_key_pem
   private_key   = local.keys_provided ? var.private_key : tls_private_key.generated_key[0].private_key_pem
 }
 
