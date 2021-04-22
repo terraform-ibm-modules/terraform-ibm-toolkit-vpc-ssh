@@ -43,3 +43,9 @@ variable "private_key" {
   description = "(Optional) The public key provided for the ssh key. If not provided it will be generated"
   default     = ""
 }
+
+variable "rsa_bits" {
+  type        = number
+  description = "The number of bits for the generated rsa key"
+  default     = 3072
+}
