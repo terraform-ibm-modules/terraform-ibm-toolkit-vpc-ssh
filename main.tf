@@ -22,7 +22,8 @@ data ibm_resource_group resource_group {
 resource tls_private_key generated_key {
   count = !local.keys_provided ? 1 : 0
 
-  algorithm   = "RSA"
+  algorithm = "RSA"
+  rsa_bits  = var.rsa_bits
 }
 
 resource ibm_is_ssh_key key {
