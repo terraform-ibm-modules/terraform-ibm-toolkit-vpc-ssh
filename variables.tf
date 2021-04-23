@@ -40,12 +40,24 @@ variable "public_key" {
 
 variable "private_key" {
   type        = string
-  description = "(Optional) The public key provided for the ssh key. If not provided it will be generated"
+  description = "(Optional) The private key provided for the ssh key. If not provided it will be generated"
   default     = ""
 }
 
 variable "rsa_bits" {
   type        = number
-  description = "The number of bits for the generated rsa key"
+  description = "The number of bits for the rsa key, if it will be generated"
   default     = 3072
+}
+
+variable "public_key_file" {
+  type        = string
+  description = "(Optional) The name of the file containing the public key provided for the ssh key. If not provided it will be generated"
+  default     = ""
+}
+
+variable "private_key_file" {
+  type        = string
+  description = "(Optional) The name of the file containing the private key provided for the ssh key. If not provided it will be generated"
+  default     = ""
 }
