@@ -42,6 +42,18 @@ variable "private_key" {
   description = "The private key provided for the ssh key. If empty string is provided then a new key will be generated."
 }
 
+variable "public_key_file" {
+  type        = string
+  description = "The name of the file containing the public key provided for the ssh key. If empty string is provided then a new key will be generated."
+  default     = ""
+}
+
+variable "private_key_file" {
+  type        = string
+  description = "The name of the file containing the private key provided for the ssh key. If empty string is provided then a new key will be generated."
+  default     = ""
+}
+
 variable "rsa_bits" {
   type        = number
   description = "The number of bits for the rsa key, if it will be generated"
