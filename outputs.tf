@@ -9,12 +9,6 @@ output "public_key" {
   depends_on  = [ibm_is_ssh_key.key]
 }
 
-output "public_key_pem" {
-  description = "The public key value in pem format"
-  value       = local.public_key_pem
-  depends_on  = [ibm_is_ssh_key.key]
-}
-
 output "private_key" {
   description = "The private key value"
   value       = local.private_key
