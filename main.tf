@@ -28,6 +28,6 @@ resource tls_private_key generated_key {
 
 resource ibm_is_ssh_key key {
   name = local.name
-
   public_key = local.public_key
+  resource_group = data.ibm_resource_group.resource_group.id
 }
