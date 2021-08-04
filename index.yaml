@@ -53,6 +53,75 @@ versions:
       - name: private_key
         type: string
         description: The private key provided for the ssh key. If empty string is provided then a new key will be generated.
+        default: ""
+        optional: true
+      - name: public_key_file
+        type: string
+        description: The name of the file containing the public key provided for the ssh key. If empty string is provided then a new key will be generated.
+        default: ""
+        optional: true
+      - name: private_key_file
+        type: string
+        description: The name of the file containing the private key provided for the ssh key. If empty string is provided then a new key will be generated.
+        default: ""
+        optional: true
+      - name: rsa_bits
+        type: number
+        description: The number of bits for the rsa key, if it will be generated
+        default: 3072
+        optional: true
+    version: v1.6.0
+    outputs:
+      - name: id
+        description: The id of the ssh key
+      - name: public_key
+        description: The public key value in openssh format
+      - name: private_key
+        description: The private key value
+  - platforms: []
+    dependencies:
+      - id: resource_group
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
+            version: ">= 2.1.0"
+    variables:
+      - name: resource_group_name
+        moduleRef:
+          id: resource_group
+          output: name
+        type: string
+        description: 'Name of resource group in which to create the ssh key instance. '
+      - name: region
+        scope: global
+        type: string
+        description: Region
+      - name: ibmcloud_api_key
+        scope: global
+        type: string
+        description: The IBM Cloud api key used to provision the IBM Cloud resources
+      - name: name_prefix
+        scope: global
+        type: string
+        description: (Optional) Prefix used to name all resources. If not provided then resource_group_name is used.
+        default: ""
+        optional: true
+      - name: name
+        scope: module
+        type: string
+        description: (Optional) Name given to the ssh key instance. If not provided it will be generated using prefix_name
+        default: ""
+        optional: true
+      - name: label
+        type: string
+        description: (Optional) Label used for the instance. It will be added to the name_prefix to create the name if the name is not provided.
+        default: sshkey
+        optional: true
+      - name: public_key
+        type: string
+        description: The public key provided for the ssh key. If empty string is provided then a new key will be generated.
+      - name: private_key
+        type: string
+        description: The private key provided for the ssh key. If empty string is provided then a new key will be generated.
       - name: public_key_file
         type: string
         description: The name of the file containing the public key provided for the ssh key. If empty string is provided then a new key will be generated.
