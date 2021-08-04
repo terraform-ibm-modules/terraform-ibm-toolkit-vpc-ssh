@@ -40,6 +40,7 @@ variable "public_key" {
 variable "private_key" {
   type        = string
   description = "The private key provided for the ssh key. If empty string is provided then a new key will be generated."
+  default     = ""
 }
 
 variable "public_key_file" {
