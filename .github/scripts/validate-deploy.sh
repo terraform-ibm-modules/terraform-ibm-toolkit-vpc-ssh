@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-PROVIDED_PUBLIC_KEY=$(cat terraform.tfvars | grep "public_key=" | sed 's/public_key="(.*)"/\1/g')
-PROVIDED_PRIVATE_KEY=$(cat terraform.tfvars | grep "private_key=" | sed 's/private_key="(.*)"/\1/g')
+PROVIDED_PUBLIC_KEY=$(cat terraform.tfvars | grep "public_key=" | sed 's/public_key=["](.*)["]/\1/g')
+PROVIDED_PRIVATE_KEY=$(cat terraform.tfvars | grep "private_key=" | sed 's/private_key=["](.*)["]/\1/g')
 PUBLIC_KEY=$(cat .public-key)
 PRIVATE_KEY=$(cat .private-key)
 
