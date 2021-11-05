@@ -4,16 +4,6 @@ variable "resource_group_name" {
   description = "Name of resource group in which to create the ssh key instance. "
 }
 
-variable "region" {
-  type        = string
-  description = "Region"
-}
-
-variable "ibmcloud_api_key" {
-  type        = string
-  description = "The IBM Cloud api key used to provision the IBM Cloud resources"
-}
-
 variable "name_prefix" {
   type        = string
   description = "(Optional) Prefix used to name all resources. If not provided then resource_group_name is used."
