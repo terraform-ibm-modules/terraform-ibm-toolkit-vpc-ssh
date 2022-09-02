@@ -23,8 +23,10 @@ variable "name_prefix" {
 
 variable "public_key" {
   type        = string
+  default = ""
 }
 
 variable "private_key" {
   type        = string
+  default = ""
 }
