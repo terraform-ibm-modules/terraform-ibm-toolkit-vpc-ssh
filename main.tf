@@ -1,6 +1,10 @@
 locals {
-  name_prefix        = lower(replace(var.name_prefix != "" ? var.name_prefix : var.resource_group_name, "_", "-"))
-  name               = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-${var.label}"
+  #name_prefix        = lower(replace(var.name_prefix != "" ? var.name_prefix : var.resource_group_name, "_", "-"))
+  #name               = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-${var.label}"
+
+  prefix_name     = var.name_prefix != "" ? var.name_prefix : var.resource_group_name
+  name            = lower(replace("${local.prefix_name}-vpcssh-${var.label}", "_", "-"))
+
   keys_provided      = var.public_key != ""
   key_files_provided = var.public_key_file != "" && var.private_key_file != ""
   public_key         = var.public_key_file != "" ? file(var.public_key_file) : (local.keys_provided ? var.public_key : trimspace(tls_private_key.generated_key.public_key_openssh))
