@@ -17,8 +17,9 @@ jobs:
     strategy:
       matrix:
         platform:
-          - vpc-ssh-generate
-          - vpc-ssh-provided
+           - ocp4_latest
+        #  - vpc-ssh-generate
+        #  - vpc-ssh-provided
         # testcase:
         #   - ocp4_latest
       fail-fast: false
