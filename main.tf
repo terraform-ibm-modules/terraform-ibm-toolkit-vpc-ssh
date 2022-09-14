@@ -4,7 +4,8 @@ locals {
 
   prefix_name     = var.name_prefix != "" ? var.name_prefix : var.resource_group_name
   #name            = lower(replace("${local.prefix_name}-vpcssh-${var.label}", "_", "-"))
-  name = var.name !=""
+  name               = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-${var.label}"
+
 
   keys_provided      = var.public_key != ""
   key_files_provided = var.public_key_file != "" && var.private_key_file != ""
