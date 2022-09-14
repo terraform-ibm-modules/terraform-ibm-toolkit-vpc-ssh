@@ -3,7 +3,7 @@ module "vpc-ssh" {
 
   resource_group_name = module.resource_group.name
  # name_prefix         = var.name_prefix
-  name_prefix         = local.name_prefix
+  name_prefix         = local.nm_prefix
   public_key          = var.public_key
   private_key         = var.private_key
 }
