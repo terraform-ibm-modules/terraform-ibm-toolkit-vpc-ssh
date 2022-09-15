@@ -21,7 +21,9 @@ jobs:
         #  - vpc-ssh-generate
         #  - vpc-ssh-provided
         testcase:
-           - ocp4_latest
+          # - ocp4_latest
+           - vpc-ssh-generate
+           - vpc-ssh-provided
       fail-fast: false
 
     env:
