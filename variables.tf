@@ -25,6 +25,7 @@ variable "label" {
 variable "public_key" {
   type        = string
   description = "The public key provided for the ssh key. If empty string is provided then a new key will be generated."
+  default     = ""
 }
 
 variable "private_key" {

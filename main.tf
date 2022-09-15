@@ -1,6 +1,10 @@
 locals {
   name_prefix        = lower(replace(var.name_prefix != "" ? var.name_prefix : var.resource_group_name, "_", "-"))
   name               = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-${var.label}"
+
+  # name_prefix = var.name_prefix != "" ? var.name_prefix : var.resource_group_name
+  # name        = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-${var.label}"
+
   keys_provided      = var.public_key != ""
   key_files_provided = var.public_key_file != "" && var.private_key_file != ""
   public_key         = var.public_key_file != "" ? file(var.public_key_file) : (local.keys_provided ? var.public_key : trimspace(tls_private_key.generated_key.public_key_openssh))
@@ -10,6 +14,12 @@ locals {
 resource null_resource print_names {
   provisioner "local-exec" {
     command = "echo 'Resource group: ${var.resource_group_name}'"
+  }
+}
+
+resource null_resource print_names_prefix {
+  provisioner "local-exec" {
+    command = "echo 'Name Prefix: ${local.name_prefix}' 'Name: ${local.name}'"
   }
 }
 
