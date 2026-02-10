@@ -1,5 +1,7 @@
 # IBM Cloud VPC SSH module
 
+:warning: This module is no longer maintained. Please use [terraform-ibm-landing-zone-vpc](https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vpc) for configuring IBM Cloud Virtual Private Cloud (VPC) resources.
+
 Module to register an ssh public key into the IBM Cloud infrastructure for use in accessing VPC resources
 
 ## Software dependencies
